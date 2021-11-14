@@ -92,7 +92,6 @@ async function run() {
         // POST ADD PRODUCT API
         app.post('/products', async (req, res) => {
             const result = await productsCollection.insertOne(req.body);
-            console.log(result);
             res.send(result);
         })
 
@@ -103,7 +102,6 @@ async function run() {
             const filter = { email: user.email }
             const updateDoc = { $set: { role: 'admin' } }
             const result = await usersCollection.updateOne(filter, updateDoc);
-            console.log(result);
             res.send(result);
         })
         // UPDATE ORDER STATUS API
@@ -114,7 +112,6 @@ async function run() {
                 $set: { status: order.status }
             }
             const result = await ordersCollection.updateOne(query, updateDoc);
-            console.log(result);
             res.send(result);
         })
 
